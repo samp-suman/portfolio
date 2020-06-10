@@ -19,7 +19,7 @@ class NavBar extends Component {
         <div className="mi-header-inner">
           <div className="mi-header-image">
             <Link to="/">
-              <img alt="brandimage" src="/icon.jpeg"></img>
+              <img alt="brandimage" src="portfolio/icon.jpeg"></img>
             </Link>
           </div>
           <ul className="mi-header-menu">
