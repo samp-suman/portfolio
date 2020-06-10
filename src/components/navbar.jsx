@@ -5,8 +5,13 @@ import TogglerButton from "./toggle";
 class NavBar extends Component {
   state = {};
   render() {
+    const { sideDrawerOpen } = this.props;
+    let navClass = "mi-header";
+    if (sideDrawerOpen) {
+      navClass = "mi-header is-visible";
+    }
     return (
-      <nav className="mi-header">
+      <nav className={navClass}>
         <TogglerButton
           sideDrawerOpen={this.props.sideDrawerOpen}
           onToggle={() => this.props.onDrawTogglerClick()}
@@ -14,7 +19,7 @@ class NavBar extends Component {
         <div className="mi-header-inner">
           <div className="mi-header-image">
             <Link to="/">
-              <img alt="brandimage" src="/images/brand-image.jpg"></img>
+              <img alt="brandimage" src="/icon.jpeg"></img>
             </Link>
           </div>
           <ul className="mi-header-menu">
