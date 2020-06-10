@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom'
+// import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/navbar';
+import Projects from './components/projects';
+import Home from './components/home';
+import About from './components/about';
+import Resume from './components/resume';
+import Contact from './components/contact';
+import Blogs from './components/blogs';
+import NotFound from './components/notFound';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    sideDrawerOpen: false,
+  };
+
+  drawTogglerClickHandler = () => {
+
+    console.log('Toggler clicked');
+    this.setState((prevState) => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
+  };
+
+  render() {
+    return (<React.Fragment>
+      <NavBar onDrawTogglerClick={this.drawTogglerClickHandler}
+        sideDrawerOpen={this.state.sideDrawerOpen} />
+      <main className='container'>
+        <Switch>
+          <Route path="/home" component={Home}></Route>
+          <Route path="/about" component={About}></Route>
+          <Route path="/resume" component={Resume}></Route>
+          <Route path="/contact" component={Contact}></Route>
+          <Route path="/blogs" component={Blogs}></Route>
+          <Route path="/projects" component={Projects}></Route>
+          <Route path="/not-found" component={NotFound}></Route>
+          <Redirect from="/" exact to="/home" />
+          <Redirect to="/not-found" />
+        </Switch>
+      </main>
+    </React.Fragment>
+    );
+  }
 }
+
 
 export default App;
