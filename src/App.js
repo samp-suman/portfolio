@@ -28,7 +28,8 @@ class App extends Component {
     return (<React.Fragment>
       <NavBar onDrawTogglerClick={this.drawTogglerClickHandler}
         sideDrawerOpen={this.state.sideDrawerOpen} />
-      <main className='container'>
+      <main className='mi-wrapper'>
+        <div className="mi-bglines"><span></span><span></span><span></span><span></span><span></span></div>
         <Switch>
           <Route path="/home" component={Home}></Route>
           <Route path="/about" component={About}></Route>
